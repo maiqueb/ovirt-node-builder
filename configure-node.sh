@@ -27,8 +27,8 @@ if [ "$ROLE" == "master" ]; then
     chown -R 36:36 /exports/data
     chmod 0755 /exports/data
     echo "/exports/data   *(rw)" > /etc/exports
-    systemctl restart nfs-server.service
-    systemctl restart nfs.service
+    systemctl enable --now nfs.service
+    systemctl enable --now nfs-server.service
     exportfs -a
     showmount -e
 fi
