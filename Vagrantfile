@@ -16,6 +16,7 @@ Vagrant.configure("2") do |config|
       node.vm.provider :libvirt do |vm|
         vm.memory = $memory
         vm.cpus = $cpus
+        vm.qemu_use_session = false
       end
       $role = i == 1 ? "master" : "slave"
       node.vm.provision "shell", env: {"ROLE" => $role}, inline: <<-SHELL
